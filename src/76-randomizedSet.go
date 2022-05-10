@@ -14,7 +14,6 @@ type RandomizedSet struct {
 func Constructor() RandomizedSet {
 	return RandomizedSet{map[int]int{}, []int{}}
 }
->>>>>>> 7275179f1785d22621e7c40876f1cbab01f4ecbb
 
 func (this *RandomizedSet) Insert(val int) bool {
 	if _, ok := this.HashMap[val]; !ok {
