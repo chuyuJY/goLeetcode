@@ -7,9 +7,9 @@ type RandomizedSet struct {
 	Nums    []int
 }
 
-func Constructor() RandomizedSet {
-	return RandomizedSet{map[int]int{}, []int{}}
-}
+//func Constructor() RandomizedSet {
+//	return RandomizedSet{map[int]int{}, []int{}}
+//}
 
 func (this *RandomizedSet) Insert(val int) bool {
 	if _, ok := this.HashMap[val]; !ok {

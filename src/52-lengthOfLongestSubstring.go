@@ -22,13 +22,13 @@ func lengthOfLongestSubstring(s string) int {
 	return res
 }
 
-func max(a, b int) int {
-	if a > b {
-		return a
-	} else {
-		return b
-	}
-}
+//func max(a, b int) int {
+//	if a > b {
+//		return a
+//	} else {
+//		return b
+//	}
+//}
 func main() {
 	str := "pwwkew"
 	fmt.Println(lengthOfLongestSubstring(str))
