@@ -1,31 +1,63 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math/rand"
+)
 
-func fastSort(nums []int, low, high int) []int {
-	sort := func(nums []int, low, high int) int {
-		t, p := low, nums[low]
-		low++
-		for {
-			for ; nums[low] < p && low < high; low++ { // 最后一定是停在排序好的第一个比p大的元素上
+// 1. 第一种
+func fastSort(nums []int, start, end int) []int {
+	partition := func(nums []int, start, end int) int {
+		// 随机选择一个，并和最右元素交换
+		random := start + rand.Intn(end-start+1)
+		nums[end], nums[random] = nums[random], nums[end]
+		// 存储下标
+		index := end
+		for start < end {
+			for start < end && nums[start] < nums[index] {
+				start++
 			}
-			for ; nums[high] >= p && high >= low; high-- { // 强烈注意此处的 high >= low ！！！要让high在从右往左第一个更小的元素上
+			for start < end && nums[end] >= nums[index] {
+				end--
 			}
-			if low >= high {
-				break
-			}
-			nums[low], nums[high] = nums[high], nums[low]
+			nums[start], nums[end] = nums[end], nums[start]
 		}
-		nums[t], nums[high] = nums[high], nums[t]
-		return high
+		nums[end], nums[index] = nums[index], nums[end]
+		return end
 	}
-	if low < high {
-		t := sort(nums, low, high)
-		fastSort(nums, low, t-1)
-		fastSort(nums, t+1, high)
+	if start < end {
+		pivot := partition(nums, start, end)
+		fastSort(nums, start, pivot-1)
+		fastSort(nums, pivot+1, end)
 	}
 	return nums
 }
+
+// 2. 第二种
+//func fastSort(nums []int, left, right int) []int {
+//	if left < right {
+//		pivot := partition(nums, left, right)
+//		fastSort(nums, left, pivot-1)
+//		fastSort(nums, pivot+1, right)
+//	}
+//	return nums
+//}
+//
+//func partition(nums []int, left, right int) int {
+//	random := left + rand.Intn(right-left+1)
+//	nums[random], nums[right] = nums[right], nums[random]
+//
+//	small := left - 1
+//	for i := left; i < right; i++ {
+//		if nums[i] < nums[right] {
+//			small++
+//			nums[i], nums[small] = nums[small], nums[i]
+//		}
+//	}
+//	small++
+//	nums[right], nums[small] = nums[small], nums[right]
+//	return small
+//}
 
 func main() {
 	nums := []int{9, 12, 56, 5, 24, 35, 5, 5, 6, 8, 43, 16}
