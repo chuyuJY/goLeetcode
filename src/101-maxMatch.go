@@ -145,24 +145,24 @@ func main() {
 	//	{11, 21, 23},
 	//}
 	matchDegree := [][]int{
-		{-1, -2, 0, -3},
-		{-1, -2, -4, -3},
-		{-2, -3, 0, -1},
-		{-1, -1, 0, -2},
+		{85, 67, 88, 81},
+		{76, 86, 73, 90},
+		{85, 71, 81, 91},
+		{86, 69, 85, 87},
 	}
 
 	match := Construct(matchDegree)
 	match.bfsMatch()
-	fmt.Println(match.max)
-	fmt.Println(match.min)
-	fmt.Println(match.result)
+	color.Red(fmt.Sprintf("上界为:%d%%", match.max))
+	color.Red(fmt.Sprintf("下界为:%d%%", match.min))
+	//fmt.Println(match.result)
 	fmt.Println("  -------------------------------------------")
 	color.Blue("  |             最佳物资投放方案            |")
 	fmt.Println("  -------------------------------------------")
 	for key, val := range match.result {
-		fmt.Printf("  | 第%d号阵地投放编号%d 的物资--匹配度为: %d | \n", key+1, val+1, matchDegree[key][val])
+		fmt.Printf("  | 第%d号阵地投放编号%d 的物资--匹配度为: %d%% | \n", key+1, val+1, matchDegree[key][val])
 	}
 	fmt.Println("  -------------------------------------------")
-	color.Green(fmt.Sprintf("  |           %s: %d           |", "最佳匹配度之和", match.resMax))
+	color.Green(fmt.Sprintf("  |           %s: %d%%           |", "最佳匹配度之和", match.resMax))
 	fmt.Println("  -------------------------------------------")
 }

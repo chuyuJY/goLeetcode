@@ -19,13 +19,6 @@ func (a *test) pop() int {
 }
 
 func main() {
-	a := &test{}
-	a.add(1)
-	a.add(2)
-	fmt.Println(*a)
-	a.swap(0, 1)
-	fmt.Println(*a)
-	fmt.Println(a.pop())
-	fmt.Println(*a)
-	hashMap := map[int]int{}
+	test := "123456"
+	fmt.Println(test[1:2])
 }
