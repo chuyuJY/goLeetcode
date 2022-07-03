@@ -41,24 +41,24 @@ func buildGraph(equations [][]string, values []float64) map[string]map[string]fl
 }
 
 // 2. 计算路径dfs
-func dfs(from, to string, graph map[string]map[string]float64, visited map[string]bool) float64 {
-	if from == to {
-		return 1.0
-	}
-	visited[from] = true
-	if nodes, ok := graph[from]; ok {
-		for newFrom, value := range nodes {
-			if !visited[newFrom] {
-				nextValue := dfs(newFrom, to, graph, visited)
-				if nextValue > 0 {
-					return value * nextValue
-				}
-			}
-		}
-	}
-	delete(visited, from)
-	return -1.0
-}
+//func dfs(from, to string, graph map[string]map[string]float64, visited map[string]bool) float64 {
+//	if from == to {
+//		return 1.0
+//	}
+//	visited[from] = true
+//	if nodes, ok := graph[from]; ok {
+//		for newFrom, value := range nodes {
+//			if !visited[newFrom] {
+//				nextValue := dfs(newFrom, to, graph, visited)
+//				if nextValue > 0 {
+//					return value * nextValue
+//				}
+//			}
+//		}
+//	}
+//	delete(visited, from)
+//	return -1.0
+//}
 
 // 3. 计算路径bfs  // todo
 //func bfs(from, to string, graph map[string]map[string]float64, visited map[string]bool) float64 {

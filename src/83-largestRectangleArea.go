@@ -17,12 +17,13 @@ func largestRectangleArea(heights []int) int {
 	}
 	return res
 }
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
-}
+
+//func max(a, b int) int {
+//	if a > b {
+//		return a
+//	}
+//	return b
+//}
 func monStack(heights, stack []int) []int {
 	res := make([]int, len(heights))
 	cur := 0

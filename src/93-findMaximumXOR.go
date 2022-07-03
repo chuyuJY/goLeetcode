@@ -24,12 +24,12 @@ func findMaximumXOR(nums []int) int {
 	return res
 }
 
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
-}
+//func max(a, b int) int {
+//	if a > b {
+//		return a
+//	}
+//	return b
+//}
 
 type Trie struct {
 	next [2]*Trie
