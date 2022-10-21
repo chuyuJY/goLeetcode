@@ -29,9 +29,9 @@ func dfs(i, j int, matrix [][]int, length [][]int) int {
 	return length[i][j]
 }
 
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
-}
+//func max(a, b int) int {
+//	if a > b {
+//		return a
+//	}
+//	return b
+//}

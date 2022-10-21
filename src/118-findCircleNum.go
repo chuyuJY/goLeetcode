@@ -57,13 +57,13 @@ func findFather(fathers []int, node int) int {
 
 // 合并两个子集
 // 其实就是将两个子集的根节点合到一起（把其中一个根节点的father改成另一个子集的根节点即可）
-func union(fathers []int, nodeI, nodeJ int) bool {
-	fatherI, fatherJ := findFather(fathers, nodeI), findFather(fathers, nodeJ)
-	// 若是不同的子集
-	if fatherI != fatherJ {
-		fathers[fatherI] = fatherJ
-		return true
-	}
-	// 若是相同的子集，无法合并
-	return false
-}
+//func union(fathers []int, nodeI, nodeJ int) bool {
+//	fatherI, fatherJ := findFather(fathers, nodeI), findFather(fathers, nodeJ)
+//	// 若是不同的子集
+//	if fatherI != fatherJ {
+//		fathers[fatherI] = fatherJ
+//		return true
+//	}
+//	// 若是相同的子集，无法合并
+//	return false
+//}

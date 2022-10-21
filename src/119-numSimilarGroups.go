@@ -38,12 +38,12 @@ func findFather(fathers []int, node int) int {
 	return fathers[node]
 }
 
-func union(fathers []int, nodeI, nodeJ int) bool {
-	fatherI, fatherJ := findFather(fathers, nodeI), findFather(fathers, nodeJ)
-	if fatherI != fatherJ {
-		// 注意是更改根节点的father，易错点
-		fathers[fatherI] = fatherJ
-		return true
-	}
-	return false
-}
+//func union(fathers []int, nodeI, nodeJ int) bool {
+//	fatherI, fatherJ := findFather(fathers, nodeI), findFather(fathers, nodeJ)
+//	if fatherI != fatherJ {
+//		// 注意是更改根节点的father，易错点
+//		fathers[fatherI] = fatherJ
+//		return true
+//	}
+//	return false
+//}

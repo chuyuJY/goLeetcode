@@ -41,12 +41,12 @@ import "fmt"
 //	}
 //}
 
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
-}
+//func max(a, b int) int {
+//	if a > b {
+//		return a
+//	}
+//	return b
+//}
 
 // 2. 图搜索
 func longestConsecutive(nums []int) int {
