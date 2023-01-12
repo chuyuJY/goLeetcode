@@ -50,9 +50,3 @@ func twoSum(nums []int, target int) []int {
 	}
 	return []int{}
 }
-
-func main() {
-	nums := []int{1, 5, 5, 6}
-	target := 10
-	fmt.Println(twoSum(nums, target))
-}

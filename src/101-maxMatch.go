@@ -18,12 +18,12 @@ type MaxMatch struct {
 }
 
 // node 记录分配方案
-type node struct {
-	// 记录当前选择
-	solution map[int]int
-	// 记录当前的最大值
-	maxSum int
-}
+// type node struct {
+// 	// 记录当前选择
+// 	solution map[int]int
+// 	// 记录当前的最大值
+// 	maxSum int
+// }
 
 // Construct MaxMatch 初始化参数
 func Construct(degrees [][]int) MaxMatch {

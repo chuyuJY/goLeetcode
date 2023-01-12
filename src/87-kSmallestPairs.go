@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-type maxHeap [][3]int
+// type maxHeap [][3]int
 
 func (mh maxHeap) Len() int {
 	return len(mh)

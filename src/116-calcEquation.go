@@ -23,22 +23,22 @@ func calcEquation(equations [][]string, values []float64, queries [][]string) []
 }
 
 // 1. 构建图
-func buildGraph(equations [][]string, values []float64) map[string]map[string]float64 {
-	graph := map[string]map[string]float64{}
-	for index, equation := range equations {
-		node1 := equation[0]
-		node2 := equation[1]
-		if graph[node1] == nil {
-			graph[node1] = map[string]float64{}
-		}
-		if graph[node2] == nil {
-			graph[node2] = map[string]float64{}
-		}
-		graph[node1][node2] = values[index]
-		graph[node2][node1] = 1.0 / values[index]
-	}
-	return graph
-}
+// func buildGraph(equations [][]string, values []float64) map[string]map[string]float64 {
+// 	graph := map[string]map[string]float64{}
+// 	for index, equation := range equations {
+// 		node1 := equation[0]
+// 		node2 := equation[1]
+// 		if graph[node1] == nil {
+// 			graph[node1] = map[string]float64{}
+// 		}
+// 		if graph[node2] == nil {
+// 			graph[node2] = map[string]float64{}
+// 		}
+// 		graph[node1][node2] = values[index]
+// 		graph[node2][node1] = 1.0 / values[index]
+// 	}
+// 	return graph
+// }
 
 // 2. 计算路径dfs
 //func dfs(from, to string, graph map[string]map[string]float64, visited map[string]bool) float64 {

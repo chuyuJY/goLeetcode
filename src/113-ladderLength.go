@@ -71,20 +71,20 @@ func ladderLength(beginWord string, endWord string, wordList []string) int {
 }
 
 // 找出所有的可能, 只改变一个字母
-func getNeighbors(curWord string) []string {
-	neighbors := []string{}
-	curBytes := []byte(curWord)
-	for i, char := range curBytes {
-		for newChar := 'a'; newChar <= 'z'; newChar++ {
-			if byte(newChar) != char {
-				curBytes[i] = byte(newChar)
-				neighbors = append(neighbors, string(curBytes))
-			}
-		}
-		curBytes[i] = char
-	}
-	return neighbors
-}
+// func getNeighbors(curWord string) []string {
+// 	neighbors := []string{}
+// 	curBytes := []byte(curWord)
+// 	for i, char := range curBytes {
+// 		for newChar := 'a'; newChar <= 'z'; newChar++ {
+// 			if byte(newChar) != char {
+// 				curBytes[i] = byte(newChar)
+// 				neighbors = append(neighbors, string(curBytes))
+// 			}
+// 		}
+// 		curBytes[i] = char
+// 	}
+// 	return neighbors
+// }
 
 func main() {
 	wordList := []string{"hot", "dot", "dog", "lot", "log"}

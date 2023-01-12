@@ -35,29 +35,29 @@ type TreeNode struct {
 var inorderMap map[int]int
 
 // 构建哈希表优化遍历查找
-func buildTree(preorder []int, inorder []int) *TreeNode { // 注意此处传进来的是slice
-	n := len(preorder)
-	// 构造哈希表
-	inorderMap = make(map[int]int, n)
-	for i := 0; i < len(inorder); i++ {
-		inorderMap[inorder[i]] = i
-	}
-	// 返回根节点
-	return buildMyTree(preorder, inorder, 0, n-1, 0, n-1)
+// func buildTree(preorder []int, inorder []int) *TreeNode { // 注意此处传进来的是slice
+// 	n := len(preorder)
+// 	// 构造哈希表
+// 	inorderMap = make(map[int]int, n)
+// 	for i := 0; i < len(inorder); i++ {
+// 		inorderMap[inorder[i]] = i
+// 	}
+// 	// 返回根节点
+// 	return buildMyTree(preorder, inorder, 0, n-1, 0, n-1)
 
-}
+// }
 
-func buildMyTree(preorder, inorder []int, leftPreIndex, rightPreIndex, leftInIndex, rightInIndex int) *TreeNode {
-	if leftInIndex > rightInIndex {
-		return nil
-	}
-	root := &TreeNode{Val: preorder[leftPreIndex]}
-	index := inorderMap[root.Val]
-	// 得到左子树的长度
-	length_left_subtree := index - leftInIndex
-	root.Left = buildMyTree(preorder, inorder, leftPreIndex+1, leftPreIndex+length_left_subtree, leftInIndex, index-1)
-	root.Right = buildMyTree(preorder, inorder, leftPreIndex+length_left_subtree+1, rightPreIndex, index+1, rightInIndex)
-	return root
-}
+// func buildMyTree(preorder, inorder []int, leftPreIndex, rightPreIndex, leftInIndex, rightInIndex int) *TreeNode {
+// 	if leftInIndex > rightInIndex {
+// 		return nil
+// 	}
+// 	root := &TreeNode{Val: preorder[leftPreIndex]}
+// 	index := inorderMap[root.Val]
+// 	// 得到左子树的长度
+// 	length_left_subtree := index - leftInIndex
+// 	root.Left = buildMyTree(preorder, inorder, leftPreIndex+1, leftPreIndex+length_left_subtree, leftInIndex, index-1)
+// 	root.Right = buildMyTree(preorder, inorder, leftPreIndex+length_left_subtree+1, rightPreIndex, index+1, rightInIndex)
+// 	return root
+// }
 
 // 2.
