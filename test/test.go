@@ -1,61 +1,48 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
-	"math"
+	"os"
+	"sort"
+	"strconv"
+	"strings"
 )
 
-func getMaxValue(str string, k int) int {
-	dp := make([][]int, len(str)+1)
-	for i := 0; i < len(dp); i++ {
-		dp[i] = make([]int, i+1)
-	}
-	// 初始化
-	for i := 1; i < len(dp); i++ {
-		for j := 1; j <= i; j++ {
-			dp[i][j] = math.MaxInt
-		}
-	}
-	for i := 1; i < len(dp); i++ {
-		dp[i][1] = count(str[:i])
-	}
-	for i := 1; i < len(dp); i++ {
-		for j := 2; j <= k; j++ {
-			for m := i; m >= j; m-- {
-				dp[i][j] = min(dp[i][j], max(dp[m-1][j-1], count(str[m-1:i])))
-			}
-		}
-	}
-	return dp[len(str)][k]
-}
-
-// 计算str的权值
-func count(str string) int {
-	hashMap := make([]bool, 26)
-	t := 0
-	for i := 0; i < len(str); i++ {
-		if !hashMap[str[i]-'a'] {
-			t++
-			hashMap[str[i]-'a'] = true
-		}
-	}
-	return len(str) * t
-}
-
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
-}
-
-func min(a, b int) int {
-	if a < b {
-		return a
-	}
-	return b
-}
-
 func main() {
-	fmt.Println(getMaxValue("ababbbb", 2))
+	var n, m int
+	fmt.Scanf("%v %v\n", &n, &m)
+
+	sc := bufio.NewReader(os.Stdin)
+	str, _ := sc.ReadString('\n')
+	s := strings.TrimRight(str, "\r\n")
+
+	str, _ = sc.ReadString('\n')
+	str = strings.TrimRight(str, "\r\n")
+	ks := []int{}
+	strs := strings.Split(str, " ")
+	for _, str := range strs {
+		k, _ := strconv.Atoi(str)
+		ks = append(ks, k)
+	}
+	fmt.Println(test4(s, ks))
+}
+
+func test4(s string, ks []int) string {
+	sort.Ints(ks)
+	strByte := []byte(s)
+	cur, right := -1, 0
+	for i := 0; i < len(strByte); i++ {
+		for i == right {
+			cur++
+			if cur == len(ks) {
+				return string(strByte)
+			}
+			right = ks[cur]
+		}
+		if i < right {
+			strByte[i] = byte(int('a') + (int(strByte[i]-'a')+len(ks)-cur)%26)
+		}
+	}
+	return string(strByte)
 }
