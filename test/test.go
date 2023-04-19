@@ -1,5 +1,6 @@
 package main
 
+<<<<<<< Updated upstream
 import (
 	"bufio"
 	"fmt"
@@ -46,3 +47,4 @@ func test4(s string, ks []int) string {
 	}
 	return string(strByte)
 }
+

@@ -25,10 +25,10 @@ func main() {
 		fmt.Fscan(sc, &num)
 		c = append(c, num)
 	}
-	fmt.Println(test15(n, p, c))
+	fmt.Println(test9(n, p, c))
 }
 
-func test15(n int, p, c []int) int {
+func test9(n int, p, c []int) int {
 	graph := map[int][]int{}
 	for i := 2; i < len(p); i++ {
 		graph[p[i]] = append(graph[p[i]], i)

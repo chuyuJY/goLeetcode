@@ -3,10 +3,8 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"math"
 	"os"
-	"sort"
-	"strconv"
-	"strings"
 )
 
 func main() {
@@ -14,29 +12,40 @@ func main() {
 	var n, m, s int
 	fmt.Fscanln(sc, &n, &m, &s)
 	nums := []int{}
-	str, _ := sc.ReadString('\n')
-	strs := strings.Split(strings.TrimRight(str, "\r\n"), " ")
-	for _, str := range strs {
-		num, _ := strconv.Atoi(str)
-		nums = append(nums, num)
+	for i := 0; i < n; i++ {
+		var ai int
+		fmt.Fscan(sc, &ai)
+		nums = append(nums, ai)
 	}
-	fmt.Println(test3(n, m, s, nums))
+	fmt.Fscanln(sc)
+	test15(n, m, s, nums)
 }
 
-func test3(n, m, s int, nums []int) int {
-	res := 0
-	sort.Ints(nums)
-	index := 0
-	for n-index > 0 {
-		if n-index > m {
-			res += countValue(m, nums[index], nums[index+m-1], s)
-			index += m
-		} else {
-
+func test15(n, m, s int, nums []int) {
+	dp := make([]int, n+1)
+	for i := 1; i < len(dp); i++ {
+		dp[i] = math.MaxInt
+	}
+	for i := 1; i < len(dp); i++ {
+		u, v := nums[i-1], nums[i-1]
+		for j := i; j >= 1 && j > i-m; j-- {
+			u, v = max(u, nums[j-1]), min(v, nums[j-1])
+			dp[i] = min(dp[i], dp[j-1]+(i-j+1)*((u+v)/2)+s)
 		}
 	}
+	fmt.Println(dp[n])
 }
 
-func countValue(k, u, v, s int) int {
-	return k*(u+v)/2 + s
+func max(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
+}
+
+func min(a, b int) int {
+	if a < b {
+		return a
+	}
+	return b
 }
