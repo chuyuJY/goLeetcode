@@ -80,11 +80,11 @@ func test2(a []int, edges [][]int) {
 
 func calZero(val int) []int {
 	nums := make([]int, 2)
-	for val%2 == 0 {
+	for val > 0 && val%2 == 0 {
 		nums[0]++
 		val /= 2
 	}
-	for val%5 == 0 {
+	for val > 0 && val%5 == 0 {
 		nums[1]++
 		val /= 5
 	}

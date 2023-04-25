@@ -1,6 +1,7 @@
 package main
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 import (
 	"bufio"
 	"fmt"
@@ -48,3 +49,38 @@ func test4(s string, ks []int) string {
 	return string(strByte)
 }
 
+=======
+//func numIslands(grid [][]byte) int {
+//	res := 0
+//	visitedMap := make([][]bool, len(grid))
+//	for i := 0; i < len(visitedMap); i++ {
+//		visitedMap[i] = make([]bool, len(grid[i]))
+//	}
+//	for i := 0; i < len(grid); i++ {
+//		for j := 0; j < len(grid); j++ {
+//			if !visitedMap[i][j] && isValid(grid, i, j, visitedMap) {
+//				res++
+//			}
+//		}
+//	}
+//	return res
+//}
+//
+//func isValid(grid [][]byte, i, j int, visitedMap [][]bool) bool {
+//	dirs := [][]int{{0, -1}, {0, 1}, {1, 0}, {-1, 0}}
+//	queue := [][]int{{i, j}}
+//	visitedMap[i][j] = true
+//	for len(queue) > 0 {
+//		curNode := queue[0]
+//		queue = queue[1:]
+//		for _, dir := range dirs {
+//			nextI, nextJ := curNode[0]+dir[0], curNode[1]+dir[1]
+//			if 0 <= nextI && nextI < len(grid) && 0 <= nextJ && nextJ < len(grid[0]) && grid[nextI][nextJ] == '1' && !visitedMap[nextI][nextJ] {
+//				queue = append(queue, []int{nextI, nextJ})
+//				visitedMap[nextI][nextJ] = true
+//			}
+//		}
+//	}
+//	return true
+//}
+>>>>>>> Stashed changes
