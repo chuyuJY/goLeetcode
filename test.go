@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 	"time"
 )
 
@@ -133,4 +134,35 @@ func main() {
 	ch1 <- 1
 	//<-ch
 	time.Sleep(time.Second * 2)
+}
+
+func flipgame(fronts []int, backs []int) int {
+	res := math.MaxInt
+	hashMap := map[int]bool{}
+	for i := 0; i < len(fronts); i++ {
+		if fronts[i] == backs[i] {
+			hashMap[fronts[i]] = true
+		}
+	}
+	for _, num := range fronts {
+		if !hashMap[num] {
+			res = min(res, num)
+		}
+	}
+	for _, num := range backs {
+		if !hashMap[num] {
+			res = min(res, num)
+		}
+	}
+	if res == math.MaxInt {
+		res = 0
+	}
+	return res
+}
+
+func min(a, b int) int {
+	if a < b {
+		return a
+	}
+	return b
 }
